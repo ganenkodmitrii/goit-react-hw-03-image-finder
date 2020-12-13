@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
 
-function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+import './App.css';
+import Searchbar from './components/Searchbar';
+import ImageInfo from './components/ImageInfo';
+
+class App extends Component {
+    state = {
+        imageName: '',
+    };
+
+    handleFormSubmit = imageName => {
+        this.setState({ imageName });
+    };
+    render() {
+        return (
+            <div>
+                <Searchbar formSubmitHandler={this.handleFormSubmit} />
+                <ImageInfo imageName={this.state.imageName} />
+                <ToastContainer autoClose={2000} />
+            </div>
+        );
+    }
 }
 
 export default App;

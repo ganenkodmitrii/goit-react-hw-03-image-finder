@@ -1,4 +1,28 @@
-.App {
+/* file in app.js 
+// state = {
+    //     hits: null,
+    //     loading: false,
+    // };
+
+    // componentDidMount() {
+    //     const BASE_URL = 'https://pixabay.com/api/';
+    //     const API_KEY = '19044793-8d0b89c981ce143090a5b157d';
+    //     // this.searchQuery = '';
+    //     // this.page = 1;
+    //     this.setState({ loading: true });
+    //     fetch(
+    //         `${BASE_URL}?key=${API_KEY}&page=1&image_type=photo&orientation=horizontal&per_page=12&q=rose`,
+    //     )
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data.hits);
+    //             return data.hits;
+    //         })
+    //         .then(hits => this.setState({ hits }))
+    //         .finally(() => this.setState({ loading: false }));
+    // } */
+
+/* .App {
     text-align: center;
 }
 
@@ -12,6 +36,7 @@
         animation: App-logo-spin infinite 20s linear;
     }
 }
+
 
 .App-header {
     background-color: #282c34;
@@ -35,4 +60,4 @@
     to {
         transform: rotate(360deg);
     }
-}
+} */
