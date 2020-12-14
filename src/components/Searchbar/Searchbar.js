@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { ImSearch } from 'react-icons/im';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,7 +32,6 @@ export default class Searchbar extends Component {
             <header className="Searchbar">
                 <form onSubmit={this.handleSubmit} className="SearchForm">
                     <button type="submit" className="SearchForm-button">
-                        <ImSearch style={{ marginRight: 8 }} />
                         <span className="SearchForm-button-label">Search</span>
                     </button>
 

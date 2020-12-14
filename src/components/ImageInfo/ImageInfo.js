@@ -1,40 +1,33 @@
 import { Component } from 'react';
 import imageAPI from '../imageAPI';
 
-const Status = {
-    IDLE: 'idle',
-    PENDING: 'pending',
-    RESOLVED: 'resolved',
-    REJECTED: 'rejected',
-};
+import ImageGallery from '../ImageGallery/ImageGallery';
 
 export default class ImageInfo extends Component {
     state = {
-        image: null,
+        images: [],
         error: null,
-        status: Status.IDLE,
+        status: 'idle',
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.imageName !== this.props.imageName) {
-            this.setState({ status: Status.PENDING });
+            this.setState({ status: 'pending' });
             imageAPI
                 .fetchImages(this.props.imageName)
-                .then(data => {
-                    console.log(data.hits);
-                    return data.hits;
-                })
+                // .then(data => {
+                //     console.log(data.hits);
+                //     return data.hits;
+                // })
                 .then(image =>
-                    this.setState({ image, status: Status.RESOLVED }),
-                )
-                .catch(error =>
-                    this.setState({ error, status: Status.REJECTED }),
+                    this.setState({ images: image.hits, status: 'resolved' }),
                 );
+            // .catch(error => this.setState({ error, status: 'rejected' }));
         }
     }
 
     render() {
-        const { image, error, status } = this.state;
+        const { images, error, status } = this.state;
         // const { imageName } = this.props;
 
         if (status === 'idle') {
@@ -52,13 +45,14 @@ export default class ImageInfo extends Component {
         if (status === 'resolved') {
             return (
                 <div>
-                    <li className="ImageGalleryItem">
+                    {/* <li className="ImageGalleryItem">
                         <img
-                            src={image[0].webformatURL}
+                            src={images[0].webformatURL}
                             alt=""
                             className="ImageGalleryItem-image"
                         />
-                    </li>
+                    </li> */}
+                    <ImageGallery images={images} />
                 </div>
             );
         }

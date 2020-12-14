@@ -5,10 +5,12 @@ function fetchImages(name) {
     return fetch(
         `${BASE_URL}?key=${API_KEY}&page=1&image_type=photo&orientation=horizontal&per_page=12&q=${name}`,
     ).then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(new Error(`${name}Нет такого имени`));
+        // if (response.ok) {
+        return response.json();
+        // }
+        // return Promise.reject(
+        //     new Error(`Информации по вашему запросу "${name}" не найдено`),
+        // );
     });
 }
 
