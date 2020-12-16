@@ -1,7 +1,17 @@
-export default function ImageGalleryItem({ id, webformatURL }) {
+export default function ImageGalleryItem({
+    webformatURL,
+    largeImageURL,
+    // clickOnImageItem,
+}) {
     return (
-        <li className="ImageGalleryItem" key={id}>
-            <img src={webformatURL} alt="" className="ImageGalleryItem-image" />
+        <li className="ImageGalleryItem">
+            <img
+                src={webformatURL}
+                url={largeImageURL}
+                alt=""
+                className="ImageGalleryItem-image"
+                // onClick={onClick(webformatURL)}
+            />
         </li>
     );
 }

@@ -2,30 +2,43 @@ import { Component } from 'react';
 import imageAPI from '../imageAPI';
 
 import ImageGallery from '../ImageGallery/ImageGallery';
+import Button from '../Button/Button';
 
 export default class ImageInfo extends Component {
     state = {
         images: [],
         error: null,
         status: 'idle',
+        page: 1,
+        //     // showModal: false,
     };
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.searchImage !== this.props.searchImage) {
+            this.setState({ status: 'pending', page: 1 });
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.imageName !== this.props.imageName) {
-            this.setState({ status: 'pending' });
             imageAPI
-                .fetchImages(this.props.imageName)
-                // .then(data => {
-                //     console.log(data.hits);
-                //     return data.hits;
-                // })
-                .then(image =>
-                    this.setState({ images: image.hits, status: 'resolved' }),
+                .fetchImages(this.props.searchImage, this.state.page)
+                .then(data =>
+                    this.setState({
+                        images: data.hits,
+                        status: 'resolved',
+                    }),
                 );
-            // .catch(error => this.setState({ error, status: 'rejected' }));
         }
     }
 
+    handleBtnChangePage = () => {
+        const nextPage = this.state.page + 1;
+        this.setState({
+            page: this.state.page + 1,
+        });
+
+        imageAPI.fetchImages(this.props.searchImage, nextPage).then(data =>
+            this.setState(({ images }) => ({
+                images: [...images, ...data.hits],
+            })),
+        );
+    };
     render() {
         const { images, error, status } = this.state;
         // const { imageName } = this.props;
@@ -44,15 +57,9 @@ export default class ImageInfo extends Component {
 
         if (status === 'resolved') {
             return (
-                <div>
-                    {/* <li className="ImageGalleryItem">
-                        <img
-                            src={images[0].webformatURL}
-                            alt=""
-                            className="ImageGalleryItem-image"
-                        />
-                    </li> */}
+                <div style={{ padding: 10 }}>
                     <ImageGallery images={images} />
+                    <Button loadMoreBtn={this.handleBtnChangePage} />
                 </div>
             );
         }

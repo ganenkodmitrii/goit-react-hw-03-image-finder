@@ -5,26 +5,26 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default class Searchbar extends Component {
     state = {
-        image: '',
+        search: '',
     };
 
     handleChange = e => {
-        this.setState({ image: e.currentTarget.value.toLowerCase() });
+        this.setState({ search: e.currentTarget.value.toLowerCase() });
     };
 
     handleSubmit = e => {
         e.preventDefault();
 
-        if (this.state.image.trim() === '') {
+        if (this.state.search.trim() === '') {
             return toast('Enter text!');
         }
 
-        this.props.formSubmitHandler(this.state.image);
+        this.props.formSubmitHandler(this.state.search);
         this.reset();
     };
 
     reset = () => {
-        this.setState({ image: '' });
+        this.setState({ search: '' });
     };
 
     render() {
@@ -38,7 +38,7 @@ export default class Searchbar extends Component {
                     <input
                         className="SearchForm-input"
                         type="text"
-                        value={this.state.image}
+                        value={this.state.search}
                         autoComplete="off"
                         autoFocus
                         placeholder="Search images and photos"
