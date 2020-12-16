@@ -185,6 +185,9 @@ img {
 * Стили компонента Buton (Load more)
 */
 .BoxBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px auto;
 }
 

@@ -1,16 +1,19 @@
 export default function ImageGalleryItem({
     webformatURL,
     largeImageURL,
-    // clickOnImageItem,
+    clickOnImageItem,
 }) {
     return (
-        <li className="ImageGalleryItem">
+        <li
+            onClick={() => clickOnImageItem(largeImageURL)}
+            className="ImageGalleryItem"
+        >
             <img
                 src={webformatURL}
                 url={largeImageURL}
                 alt=""
                 className="ImageGalleryItem-image"
-                // onClick={onClick(webformatURL)}
+                // onClick={clickOnImageItem(webformatURL)}
             />
         </li>
     );

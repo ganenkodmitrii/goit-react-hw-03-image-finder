@@ -10,7 +10,8 @@ export default class ImageInfo extends Component {
         error: null,
         status: 'idle',
         page: 1,
-        //     // showModal: false,
+        showModal: false,
+        imageModal: '',
     };
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.searchImage !== this.props.searchImage) {
@@ -39,6 +40,7 @@ export default class ImageInfo extends Component {
             })),
         );
     };
+
     render() {
         const { images, error, status } = this.state;
         // const { imageName } = this.props;
@@ -57,7 +59,7 @@ export default class ImageInfo extends Component {
 
         if (status === 'resolved') {
             return (
-                <div style={{ padding: 10 }}>
+                <div style={{ margin: '0 auto', padding: 10 }}>
                     <ImageGallery images={images} />
                     <Button loadMoreBtn={this.handleBtnChangePage} />
                 </div>
