@@ -13,7 +13,6 @@ export default function ImageGalleryItem({
                 url={largeImageURL}
                 alt=""
                 className="ImageGalleryItem-image"
-                // onClick={clickOnImageItem(webformatURL)}
             />
         </li>
     );

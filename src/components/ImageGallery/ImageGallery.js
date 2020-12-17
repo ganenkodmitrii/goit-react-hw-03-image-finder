@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
-import Modal from '../Modal/Modal';
-
+import ImageGalleryItem from '../ImageGalleryItem';
+import Modal from '../Modal';
 export default class ImageGallery extends Component {
     state = {
         showModal: false,
@@ -39,7 +38,7 @@ export default class ImageGallery extends Component {
                     <Modal onCloseModal={this.closeModal}>
                         {
                             <img
-                                style={{ height: 360 }}
+                                style={{ height: 540 }}
                                 src={imageModal}
                                 alt=""
                             />

@@ -8,7 +8,7 @@ function fetchImages(name, page) {
         if (response.ok) {
             return response.json();
         }
-        return Promise.reject(new Error('No response from server'));
+        return Promise.reject(new Error('Что-то пошло не так'));
     });
 }
 
