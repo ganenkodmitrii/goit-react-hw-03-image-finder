@@ -16,7 +16,9 @@ export default class Searchbar extends Component {
         e.preventDefault();
 
         if (this.state.search.trim() === '') {
-            return toast('Enter text!');
+            return toast.info('Ничего не ввели в поиск! :(', {
+                backgroundColor: '#3f51b5',
+            });
         }
 
         this.props.formSubmitHandler(this.state.search);
@@ -31,19 +33,19 @@ export default class Searchbar extends Component {
         return (
             <header className="Searchbar">
                 <form onSubmit={this.handleSubmit} className="SearchForm">
-                    <button type="submit" className="SearchForm-button">
-                        <span className="SearchForm-button-label">Search</span>
-                    </button>
-
                     <input
                         className="SearchForm-input"
                         type="text"
                         value={this.state.search}
                         autoComplete="off"
                         autoFocus
-                        placeholder="Search images and photos"
+                        placeholder="Поиск"
                         onChange={this.handleChange}
                     />
+
+                    <button type="submit" className="SearchForm-button">
+                        <span className="SearchForm-button-label">Search</span>
+                    </button>
                 </form>
             </header>
         );

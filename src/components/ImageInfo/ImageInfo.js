@@ -28,6 +28,7 @@ export default class ImageInfo extends Component {
                         status: 'resolved',
                     });
                 })
+                // ???Catch не работает :(
                 .catch(error => {
                     this.setState({
                         error: error,
@@ -49,10 +50,16 @@ export default class ImageInfo extends Component {
             })),
         );
 
-        // window.scrollTo({
-        //     top: document.documentElement.scrollHeight,
-        //     behavior: 'smooth',
-        // });
+        this.handleScroll();
+    };
+
+    handleScroll = () => {
+        setTimeout(() => {
+            window.scrollBy({
+                top: document.documentElement.clientHeight - 160,
+                behavior: 'smooth',
+            });
+        }, 1000);
     };
 
     render() {
