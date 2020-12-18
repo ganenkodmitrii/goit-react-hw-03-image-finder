@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 export default function Button({ loadMoreBtn }) {
     return (
         <div className="BoxBtn">
@@ -7,3 +8,6 @@ export default function Button({ loadMoreBtn }) {
         </div>
     );
 }
+Button.propTypes = {
+    loadMoreBtn: PropTypes.func,
+};

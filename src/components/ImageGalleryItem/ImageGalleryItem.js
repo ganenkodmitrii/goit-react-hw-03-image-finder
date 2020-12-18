@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function ImageGalleryItem({
     webformatURL,
     largeImageURL,
@@ -17,3 +19,8 @@ export default function ImageGalleryItem({
         </li>
     );
 }
+ImageGalleryItem.propTypes = {
+    webformatURL: PropTypes.string,
+    largeImageURL: PropTypes.string,
+    clickOnImageItem: PropTypes.func,
+};

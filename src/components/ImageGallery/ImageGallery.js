@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import ImageGalleryItem from '../ImageGalleryItem';
 import Modal from '../Modal';
 export default class ImageGallery extends Component {
@@ -49,3 +51,17 @@ export default class ImageGallery extends Component {
         );
     }
 }
+ImageGalleryItem.propTypes = {
+    openModal: PropTypes.func,
+    closeModal: PropTypes.func,
+    contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+            webformatURL: PropTypes.string.isRequired,
+            largeImageURL: PropTypes.string.isRequired,
+            id: PropTypes.string.isRequired,
+        }),
+    ),
+
+    showModal: PropTypes.bool,
+    imageModal: PropTypes.string,
+};

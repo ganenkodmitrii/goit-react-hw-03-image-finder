@@ -1,6 +1,7 @@
 import { Component } from 'react';
-
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 export default class Searchbar extends Component {
@@ -16,9 +17,7 @@ export default class Searchbar extends Component {
         e.preventDefault();
 
         if (this.state.search.trim() === '') {
-            return toast.info('Ничего не ввели в поиск! :(', {
-                backgroundColor: '#3f51b5',
-            });
+            return toast.info('Ничего не ввели в поиск! :(');
         }
 
         this.props.formSubmitHandler(this.state.search);
@@ -51,3 +50,7 @@ export default class Searchbar extends Component {
         );
     }
 }
+Searchbar.propTypes = {
+    search: PropTypes.string,
+    formSubmitHandler: PropTypes.func,
+};

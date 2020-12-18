@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import ImageAPI from '../ImageAPI/ImageAPI';
-
+import PropTypes from 'prop-types';
 import ImageGallery from '../ImageGallery';
 import Button from '../Button';
 import Loading from '../Loading';
@@ -89,3 +89,12 @@ export default class ImageInfo extends Component {
         }
     }
 }
+ImageInfo.propTypes = {
+    images: PropTypes.array,
+    error: PropTypes.string,
+    status: PropTypes.string,
+    page: PropTypes.number,
+    showModal: PropTypes.bool,
+    imageModal: PropTypes.string,
+    searchImage: PropTypes.string,
+};
